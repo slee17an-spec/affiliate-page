@@ -4,76 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rekomendasi Pilihan | abdisyaif.com</title>
+    
     <style>
+        :root {
+            --primary: #ee4d2d; /* Warna khas Shopee */
+            --bg-color: #f0f2f5;
+            --text-main: #1c1e21;
+            --text-muted: #606770;
+            --card-bg: #ffffff;
+        }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f4f4f9; /* Warna background lembut */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
             margin: 0; 
-            padding: 20px; 
-            text-align: center; 
-            color: #333;
+            padding: 0; 
+            line-height: 1.5;
         }
+
         .container { 
-            max-width: 480px; /* Batas maksimal lebar untuk tampilan HP */
+            max-width: 480px; 
             margin: 0 auto; 
+            padding: 40px 20px; 
         }
+
+        /* Bagian Profil */
+        .profile-section { 
+            text-align: center; 
+            margin-bottom: 35px; 
+        }
+
         .profile-img { 
-            width: 90px; 
-            height: 90px; 
+            width: 110px; 
+            height: 110px; 
             border-radius: 50%; 
-            margin-bottom: 10px; 
             object-fit: cover;
-            border: 3px solid #ee4d2d;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
         }
-        .desc {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 25px;
+
+        .profile-name { 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin: 0 0 5px 0; 
+            letter-spacing: -0.5px;
         }
-        .category-title { 
-            font-weight: bold; 
-            font-size: 16px;
-            margin-top: 30px; 
+
+        .profile-bio { 
+            font-size: 15px; 
+            color: var(--text-muted); 
+            margin: 0; 
+        }
+
+        /* Bagian Kategori */
+        .category-card { 
+            background: var(--card-bg); 
+            border-radius: 20px; 
+            padding: 24px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03); 
+        }
+
+        .category-header { 
+            font-size: 17px; 
+            font-weight: 700; 
+            margin-bottom: 18px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: var(--text-main);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        /* Tombol Link */
+        .link-item { 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa; 
+            padding: 16px 20px; 
             margin-bottom: 12px; 
-            text-align: left;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-        }
-        .link-btn { 
-            display: block; 
-            background: #ffffff; 
-            color: #333; 
-            padding: 14px; 
-            margin-bottom: 12px; 
-            border-radius: 10px; 
+            border-radius: 14px; 
             text-decoration: none; 
+            color: var(--text-main); 
             font-weight: 600; 
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: all 0.2s ease-in-out; 
+            font-size: 15px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease; 
         }
-        .link-btn:hover { 
-            background: #ee4d2d; /* Warna khas Shopee saat disentuh */
-            color: white;
-            border-color: #ee4d2d;
-            transform: translateY(-2px);
+
+        .link-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-item:hover { 
+            background: #fff8f6; 
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(238, 77, 45, 0.12);
+        }
+
+        .link-item .arrow {
+            color: #ced4da;
+            font-size: 18px;
+            transition: color 0.25s ease;
+        }
+
+        .link-item:hover .arrow {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="URL_FOTO_PROFIL_KAMU" alt="Profile" class="profile-img">
-        <h2 style="margin: 5px 0;">Rekomendasi Pilihan</h2>
-        <p class="desc">Kumpulan barang-barang bermanfaat yang sering saya pakai dan rekomendasikan.</p>
+        
+        <div class="profile-section">
+            <img src="URL_FOTO_PROFIL_KAMU_DISINI" alt="Profile" class="profile-img">
+            <h1 class="profile-name">Abdi</h1>
+            <p class="profile-bio">Kumpulan barang pilihan terbaik yang sudah teruji dan sering saya gunakan.</p>
+        </div>
 
-        <div class="category-title">🧳 Perlengkapan Traveling</div>
-        <a href="LINK_AFFILIATE_1" class="link-btn" target="_blank">Koper Kabin Anti Pecah</a>
-        <a href="LINK_AFFILIATE_2" class="link-btn" target="_blank">Bantal Leher Memory Foam</a>
-        <a href="LINK_AFFILIATE_3" class="link-btn" target="_blank">Tas Lipat Anti Air</a>
+        <div class="category-card">
+            <div class="category-header">🧳 Perlengkapan Traveling & Mudik</div>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Koper Kabin Anti Pecah (20 Inch) <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Bantal Leher Memory Foam Premium <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Tas Lipat Anti Air (Organizer) <span class="arrow">→</span>
+            </a>
+        </div>
 
-        <div class="category-title">💻 Setup Kerja & Desain</div>
-        <a href="LINK_AFFILIATE_4" class="link-btn" target="_blank">Stylus Pen Universal</a>
-        <a href="LINK_AFFILIATE_5" class="link-btn" target="_blank">Stand Laptop Ergonomis</a>
+        <div class="category-card">
+            <div class="category-header">💻 Setup Coding & Web Dev</div>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Keyboard Mechanical Wireless <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Mouse Vertikal Ergonomis <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Stand Laptop / Tablet Aluminium <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">🎥 Gear Kreator & Ads</div>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Microphone Wireless Clip-on <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Ring Light + Tripod Studio <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Powerbank Fast Charging 20.000mAh <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">👕 Fashion & Daily Wear</div>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Kaos Polos Cotton Combed 30s <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Sneakers Casual Pria <span class="arrow">→</span>
+            </a>
+            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                Jam Tangan Minimalis <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 abdisyaif.com
+        </div>
+
     </div>
 </body>
 </html>
