@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>CSV → shops.json Generator</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+.box{
+max-width:600px;
+margin:auto;
+background:#1e1e1e;
+padding:30px;
+border-radius:12px;
+}
+
+input{
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+background:#ee4d2d;
+border:none;
+color:white;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+textarea{
+width:100%;
+height:250px;
+margin-top:20px;
+background:#000;
+color:#0f0;
+padding:15px;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>CSV → shops.json Generator</h2>
+
+<p>Upload file CSV Shopee</p>
+
+<input type="file" id="csvFile">
+
+<br>
+
+<button onclick="convert()">Convert ke JSON</button>
+
+<textarea id="result" placeholder="Hasil shops.json muncul di sini..."></textarea>
+
+<br><br>
+
+<button onclick="download()">Download shops.json</button>
+
+</div>
+
+<script>
+
+let jsonData=[]
+
+function convert(){
+
+const file=document.getElementById("csvFile").files[0]
+
+if(!file){
+alert("Upload file CSV dulu")
+return
+}
+
+const reader=new FileReader()
+
+reader.onload=function(e){
+
+const lines=e.target.result.split("\n")
+
+jsonData=[]
+
+for(let i=1;i<lines.length;i+=2){
+
+const nameLine=lines[i]
+const linkLine=lines[i+1]
+
+if(!nameLine||!linkLine)continue
+
+const name=nameLine.split(",")[0].replace(/"/g,"").trim()
+
+if(!linkLine.includes(";"))continue
+
+const link=linkLine.split(";")[1].trim()
+
+jsonData.push({name:name,link:link})
+
+}
+
+const jsonText=JSON.stringify(jsonData,null,2)
+
+document.getElementById("result").value=jsonText
+
+}
+
+reader.readAsText(file)
+
+}
+
+function download(){
+
+const blob=new Blob(
+[JSON.stringify(jsonData,null,2)],
+{type:"application/json"}
+)
+
+const a=document.createElement("a")
+
+a.href=URL.createObjectURL(blob)
+
+a.download="shops.json"
+
+a.click()
+
+}
+
+</script>
+
+</body>
+</html>
