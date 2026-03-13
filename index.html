@@ -3,105 +3,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Katalog Abdi | link.abdisyaif.com</title>
+<title>Katalog Shopee | link.abdisyaif.com</title>
 
-<style>
-
-body{
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-background:linear-gradient(135deg,#ee4d2d,#111,#fe2c55);
-margin:0;
-color:#111;
-}
-
-.container{
-max-width:480px;
-margin:auto;
-padding:40px 20px;
-}
-
-.profile{
-text-align:center;
-margin-bottom:30px;
-}
-
-.profile img{
-width:110px;
-height:110px;
-border-radius:50%;
-border:3px solid white;
-}
-
-.profile h1{
-color:white;
-margin:10px 0 5px;
-}
-
-.profile p{
-color:#ddd;
-font-size:14px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-margin-bottom:20px;
-}
-
-.search{
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid #ddd;
-margin-bottom:15px;
-font-size:14px;
-}
-
-.link{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px;
-border-radius:12px;
-border:1px solid #eee;
-margin-bottom:10px;
-text-decoration:none;
-color:#111;
-}
-
-.link:hover{
-border-color:#ee4d2d;
-}
-
-.title{
-font-size:14px;
-font-weight:600;
-}
-
-.badge{
-font-size:12px;
-background:#fff0ed;
-color:#ee4d2d;
-padding:3px 8px;
-border-radius:6px;
-}
-
-.loadmore{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#ee4d2d;
-color:white;
-font-weight:600;
-cursor:pointer;
-margin-top:10px;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -110,89 +16,30 @@ margin-top:10px;
 <div class="container">
 
 <div class="profile">
+
 <img src="profile-img.jpg">
+
 <h1>Katalog Abdi</h1>
+
 <p>Rekomendasi toko pilihan terbaik</p>
+
 </div>
 
 <div class="card">
 
-<input id="search" class="search" placeholder="Cari toko...">
+<input id="search" placeholder="Cari toko..." class="search">
+
+<div id="categories"></div>
 
 <div id="shop-list"></div>
 
-<button id="loadMore" class="loadmore">Muat Lebih Banyak</button>
+<button id="loadMore" class="load">Load More</button>
 
 </div>
 
 </div>
 
-<script>
-
-let shops=[]
-let filtered=[]
-let limit=30
-let index=0
-
-const list=document.getElementById("shop-list")
-const search=document.getElementById("search")
-const loadMore=document.getElementById("loadMore")
-
-fetch("shops.json")
-.then(r=>r.json())
-.then(data=>{
-shops=data
-filtered=shops
-render()
-})
-
-function render(){
-
-const slice=filtered.slice(index,index+limit)
-
-slice.forEach(shop=>{
-
-const a=document.createElement("a")
-
-a.href=shop.link
-a.target="_blank"
-a.className="link"
-
-a.innerHTML=`
-<span class="title">${shop.name}</span>
-<span class="badge">Buka</span>
-`
-
-list.appendChild(a)
-
-})
-
-index+=limit
-
-if(index>=filtered.length){
-loadMore.style.display="none"
-}
-
-}
-
-loadMore.onclick=render
-
-search.oninput=()=>{
-
-list.innerHTML=""
-index=0
-
-const q=search.value.toLowerCase()
-
-filtered=shops.filter(s=>s.name.toLowerCase().includes(q))
-
-loadMore.style.display="block"
-
-render()
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
