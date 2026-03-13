@@ -18,9 +18,8 @@
 
       body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            /* Perpaduan Latar: Shopee Orange ke TikTok Dark/Pink */
             background: linear-gradient(135deg, #ee4d2d 0%, #111111 50%, #fe2c55 100%);
-            background-attachment: fixed; /* Agar background tidak terpotong saat scroll */
+            background-attachment: fixed; 
             color: var(--text-main); 
             margin: 0; 
             padding: 0; 
@@ -46,7 +45,6 @@
             border-radius: 50%; 
             object-fit: cover;
             border: 3px solid #ffffff;
-            /* Efek cahaya menyala: Orange Shopee (kiri) & Cyan TikTok (kanan) */
             box-shadow: -5px 5px 20px rgba(238, 77, 45, 0.8), 5px -5px 20px rgba(37, 244, 238, 0.8);
             margin-bottom: 15px;
         }
@@ -56,42 +54,78 @@
             font-weight: 700; 
             margin: 0 0 5px 0; 
             letter-spacing: -0.5px;
-            color: #ffffff; /* Teks diubah jadi putih */
+            color: #ffffff; 
         }
 
         .profile-bio { 
             font-size: 15px; 
-            color: #e4e6eb; /* Teks bio diubah jadi putih redup */
+            color: #e4e6eb; 
             margin: 0; 
         }
         
-        /* Bagian Kategori (Upgrade Premium Glassmorphism) */
-        .category-card { 
-            background: rgba(255, 255, 255, 0.92); /* Putih sedikit transparan */
-            backdrop-filter: blur(12px); /* Efek blur/kaca ala Apple */
+        /* Menu Lipat (Accordion / Details) - Premium Glassmorphism */
+        details.category-card { 
+            background: rgba(255, 255, 255, 0.92); 
+            backdrop-filter: blur(12px); 
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px; /* Sudut lebih membulat kekinian */
-            padding: 28px 24px; 
+            border-radius: 24px; 
+            padding: 20px 24px; 
             margin-bottom: 24px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Bayangan lebih dalam dan dramatis */
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Garis tepi tipis efek kaca */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            transition: all 0.3s ease;
         }
 
-        .category-header { 
+        /* Judul Menu Lipat */
+        summary.category-header { 
             font-size: 14px; 
             font-weight: 800; 
-            margin-bottom: 20px; 
             display: flex; 
+            justify-content: space-between;
             align-items: center; 
-            gap: 10px; 
             color: #1c1e21;
-            text-transform: uppercase; /* Huruf kapital semua agar lebih tegas */
-            letter-spacing: 1px; /* Jarak antar huruf */
-            /* Border bawah dihapus agar lebih bersih/clean */
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            cursor: pointer;
+            list-style: none; /* Menyembunyikan panah bawaan browser */
+            outline: none;
         }
 
-        /* Tombol Link */
-        /* Tombol Link (Upgrade UI/UX) */
+        /* Menyembunyikan panah bawaan di Safari/Chrome */
+        summary.category-header::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Ikon Panah Buka Tutup */
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        /* Putar ikon saat menu dibuka */
+        details[open] .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Jarak antara judul dan isi saat dibuka */
+        details[open] summary.category-header {
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #eaeaea;
+            padding-bottom: 15px;
+        }
+
+        /* Animasi Isi Konten */
+        .category-content {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tombol Link & Harga (Upgrade UI/UX) */
         .link-item { 
             display: flex; 
             justify-content: space-between;
@@ -102,11 +136,9 @@
             border-radius: 16px; 
             text-decoration: none; 
             color: #1c1e21; 
-            font-weight: 600; 
-            font-size: 15px;
             border: 1px solid #eaeaea; 
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi ala aplikasi pro */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
         }
 
         .link-item:last-child {
@@ -115,20 +147,45 @@
 
         .link-item:hover { 
             background: #ffffff; 
-            border-color: #ee4d2d; /* Garis berubah warna Shopee */
-            transform: translateY(-4px) scale(1.01); /* Efek timbul dan sedikit membesar */
-            box-shadow: 0 12px 24px rgba(238, 77, 45, 0.15); /* Bayangan warna oranye */
+            border-color: #ee4d2d; 
+            transform: translateY(-4px) scale(1.01); 
+            box-shadow: 0 12px 24px rgba(238, 77, 45, 0.15); 
+        }
+
+        /* Bagian Informasi Produk & Harga */
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-right: 15px;
+        }
+
+        .item-title {
+            font-weight: 600; 
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .item-price {
+            font-weight: 800;
+            font-size: 15px;
+            color: #ee4d2d; /* Warna Oranye Shopee */
+            background: #fff0ed;
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            width: fit-content;
         }
 
         .link-item .arrow {
             color: #ced4da;
-            font-size: 18px;
+            font-size: 20px;
             transition: all 0.3s ease;
         }
 
         .link-item:hover .arrow {
             color: #ee4d2d;
-            transform: translateX(6px); /* Animasi panah bergeser ke kanan saat disentuh */
+            transform: translateX(6px); 
         }
 
         /* Container iframe khusus agar responsif */
@@ -138,6 +195,7 @@
             width: 100%;
             overflow: hidden;
             border-radius: 12px;
+            margin-top: 15px;
         }
 
         /* Footer Pro Upgrade */
@@ -145,7 +203,7 @@
             text-align: center;
             margin-top: 40px;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.7); /* Putih sedikit transparan */
+            color: rgba(255, 255, 255, 0.7); 
             padding-bottom: 40px;
         }
 
@@ -163,7 +221,7 @@
         }
 
         .footer-links a:hover {
-            color: #25f4ee; /* Berubah jadi warna neon TikTok saat disentuh */
+            color: #25f4ee; 
         }
     </style>
 </head>
@@ -176,67 +234,129 @@
             <p class="profile-bio">Kumpulan barang pilihan terbaik yang sudah teruji dan sering saya gunakan.</p>
         </div>
 
-        <div class="category-card">
-            <div class="category-header">🧳 Pakaian Lebaran</div>
-            <a href="https://s.shopee.co.id/8ph03qdBiw" class="link-item" target="_blank">
-                baju couple pasangan gamis pesta mewah elegan baju couple keluarga baju couple pasangan lebaran set pakaian keluarga <span class="arrow">→</span>
-            </a>
-            <a href="https://s.shopee.co.id/AKVnp5gEQy" class="link-item" target="_blank">
-                SARIMBIT 2025 PEARL SERIES - DARK DENIM - Family Couple Set Keluarga / Baju Lebaran Keluarga Muslim <span class="arrow">→</span>
-            </a>
-            <a href="https://s.shopee.co.id/9AJqRDMcTg" class="link-item" target="_blank">
-                Azkana Batik Gamis Brokat Couple Remaja Kekinian <span class="arrow">→</span>
-            </a>
-            <a href="https://s.shopee.co.id/9fG72H3wzF" class="link-item" target="_blank">
-                Ventedaily Daniza Family Sarimbit Lebaran 2026 <span class="arrow">→</span>
-            </a>
-        </div>
-
-        <div class="category-card">
-            <div class="category-header">💻 Setup Coding & Web Dev</div>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Keyboard Mechanical Wireless <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Mouse Vertikal Ergonomis <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Stand Laptop / Tablet Aluminium <span class="arrow">→</span>
-            </a>
-        </div>
-
-        <div class="category-card">
-            <div class="category-header">🎥 Gear Kreator & Ads</div>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Microphone Wireless Clip-on <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Ring Light + Tripod Studio <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Powerbank Fast Charging 20.000mAh <span class="arrow">→</span>
-            </a>
-        </div>
-
-        <div class="category-card">
-            <div class="category-header">👕 Fashion & Daily Wear</div>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Kaos Polos Cotton Combed 30s <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Sneakers Casual Pria <span class="arrow">→</span>
-            </a>
-            <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                Jam Tangan Minimalis <span class="arrow">→</span>
-            </a>
-        </div>
-
-        <div class="category-card">
-            <div class="category-header">📱 Postingan Terbaru</div>
-            <div class="iframe-container">
-                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500" width="100%" height="512" style="border:none;overflow:hidden; max-width: 500px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <details class="category-card" open> <summary class="category-header">
+                <span>1. 🧳 Pakaian Lebaran</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div class="category-content">
+                <a href="https://s.shopee.co.id/8ph03qdBiw" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Baju Couple Pasangan / Keluarga Mewah Elegan</span>
+                        <span class="item-price">Rp 155.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="https://s.shopee.co.id/AKVnp5gEQy" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">SARIMBIT 2025 PEARL SERIES - DARK DENIM</span>
+                        <span class="item-price">Rp 180.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="https://s.shopee.co.id/9AJqRDMcTg" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Azkana Batik Gamis Brokat Couple Remaja</span>
+                        <span class="item-price">Rp 120.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="https://s.shopee.co.id/9fG72H3wzF" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Ventedaily Daniza Family Sarimbit 2026</span>
+                        <span class="item-price">Rp 210.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
             </div>
-        </div>
+        </details>
+
+        <details class="category-card">
+            <summary class="category-header">
+                <span>2. 💻 Setup Coding & Web Dev</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div class="category-content">
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Keyboard Mechanical Wireless RGB</span>
+                        <span class="item-price">Rp 450.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Mouse Vertikal Ergonomis Anti Pegal</span>
+                        <span class="item-price">Rp 250.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Stand Laptop / Tablet Aluminium Kuat</span>
+                        <span class="item-price">Rp 135.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </details>
+
+        <details class="category-card">
+            <summary class="category-header">
+                <span>3. 🎥 Gear Kreator & Ads</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div class="category-content">
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Microphone Wireless Clip-on Jernih</span>
+                        <span class="item-price">Rp 185.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Ring Light 26cm + Tripod Studio 2M</span>
+                        <span class="item-price">Rp 95.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </details>
+
+        <details class="category-card">
+            <summary class="category-header">
+                <span>4. 👕 Fashion & Daily Wear</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div class="category-content">
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Kaos Polos Cotton Combed 30s Premium</span>
+                        <span class="item-price">Rp 35.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
+                    <div class="item-info">
+                        <span class="item-title">Sneakers Casual Pria / Sepatu Jalan</span>
+                        <span class="item-price">Rp 190.000</span>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </details>
+
+        <details class="category-card" open>
+            <summary class="category-header">
+                <span>📱 Postingan Terbaru</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div class="category-content">
+                <div class="iframe-container">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500" width="100%" height="512" style="border:none;overflow:hidden; max-width: 500px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+            </div>
+        </details>
 
         <div class="footer">
             <div class="footer-links">
