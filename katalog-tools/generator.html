@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Generator Shopee Catalog</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+padding:40px;
+max-width:800px;
+margin:auto;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+background:#ee4d2d;
+color:white;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+textarea{
+width:100%;
+height:200px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>CSV → shops.json Generator</h1>
+
+<input type="file" id="csvFile">
+
+<br>
+
+<button onclick="processCSV()">
+Generate shops.json
+</button>
+
+<textarea id="output"></textarea>
+
+<script src="generator.js"></script>
+
+</body>
+</html>
