@@ -1,372 +1,353 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekomendasi Pilihan | abdisyaif.com</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekomendasi Pilihan | abdisyaif.com</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+    :root {
+        --primary: #ee4d2d; /* Warna khas Shopee */
+        --bg-color: #f0f2f5;
+        --text-main: #1c1e21;
+        --text-muted: #606770;
+        --card-bg: #ffffff;
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        background: linear-gradient(135deg, #ee4d2d 0%, #111111 50%, #fe2c55 100%);
+        background-attachment: fixed; 
+        color: var(--text-main); 
+        margin: 0; 
+        padding: 0; 
+        line-height: 1.5;
+        min-height: 100vh;
+    }
+
+    .container { 
+        max-width: 480px; 
+        margin: 0 auto; 
+        padding: 40px 20px; 
+    }
+
+    /* Bagian Profil */
+    .profile-section { 
+        text-align: center; 
+        margin-bottom: 35px; 
+    }
+
+   .profile-img { 
+        width: 110px; 
+        height: 110px; 
+        border-radius: 50%; 
+        object-fit: cover;
+        border: 3px solid #ffffff;
+        box-shadow: -5px 5px 20px rgba(238, 77, 45, 0.8), 5px -5px 20px rgba(37, 244, 238, 0.8);
+        margin-bottom: 15px;
+    }
+
+    .profile-name { 
+        font-size: 22px; 
+        font-weight: 700; 
+        margin: 0 0 5px 0; 
+        letter-spacing: -0.5px;
+        color: #ffffff; 
+    }
+
+    .profile-bio { 
+        font-size: 15px; 
+        color: #e4e6eb; 
+        margin: 0; 
+    }
     
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <style>
-        :root {
-            --primary: #ee4d2d; /* Warna khas Shopee */
-            --bg-color: #f0f2f5;
-            --text-main: #1c1e21;
-            --text-muted: #606770;
-            --card-bg: #ffffff;
-        }
+    /* Menu Lipat (Accordion / Details) - Premium Glassmorphism */
+    details.category-card { 
+        background: rgba(255, 255, 255, 0.92); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 24px; 
+        padding: 20px 24px; 
+        margin-bottom: 24px; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+        border: 1px solid rgba(255, 255, 255, 0.5); 
+        transition: all 0.3s ease;
+    }
 
-      body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background: linear-gradient(135deg, #ee4d2d 0%, #111111 50%, #fe2c55 100%);
-            background-attachment: fixed; 
-            color: var(--text-main); 
-            margin: 0; 
-            padding: 0; 
-            line-height: 1.5;
-            min-height: 100vh;
-        }
+    /* Judul Menu Lipat */
+    summary.category-header { 
+        font-size: 14px; 
+        font-weight: 800; 
+        display: flex; 
+        justify-content: space-between;
+        align-items: center; 
+        color: #1c1e21;
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        cursor: pointer;
+        list-style: none; /* Menyembunyikan panah bawaan browser */
+        outline: none;
+    }
 
-        .container { 
-            max-width: 480px; 
-            margin: 0 auto; 
-            padding: 40px 20px; 
-        }
+    /* Menyembunyikan panah bawaan di Safari/Chrome */
+    summary.category-header::-webkit-details-marker {
+        display: none;
+    }
 
-        /* Bagian Profil */
-        .profile-section { 
-            text-align: center; 
-            margin-bottom: 35px; 
-        }
+    /* Ikon Panah Buka Tutup */
+    .toggle-icon {
+        font-size: 18px;
+        transition: transform 0.3s ease;
+        color: var(--primary);
+    }
 
-       .profile-img { 
-            width: 110px; 
-            height: 110px; 
-            border-radius: 50%; 
-            object-fit: cover;
-            border: 3px solid #ffffff;
-            box-shadow: -5px 5px 20px rgba(238, 77, 45, 0.8), 5px -5px 20px rgba(37, 244, 238, 0.8);
-            margin-bottom: 15px;
-        }
+    /* Putar ikon saat menu dibuka */
+    details[open] .toggle-icon {
+        transform: rotate(180deg);
+    }
 
-        .profile-name { 
-            font-size: 22px; 
-            font-weight: 700; 
-            margin: 0 0 5px 0; 
-            letter-spacing: -0.5px;
-            color: #ffffff; 
-        }
+    /* Jarak antara judul dan isi saat dibuka */
+    details[open] summary.category-header {
+        margin-bottom: 20px;
+        border-bottom: 2px dashed #eaeaea;
+        padding-bottom: 15px;
+    }
 
-        .profile-bio { 
-            font-size: 15px; 
-            color: #e4e6eb; 
-            margin: 0; 
-        }
-        
-        /* Menu Lipat (Accordion / Details) - Premium Glassmorphism */
-        details.category-card { 
-            background: rgba(255, 255, 255, 0.92); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px; 
-            padding: 20px 24px; 
-            margin-bottom: 24px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
-            border: 1px solid rgba(255, 255, 255, 0.5); 
-            transition: all 0.3s ease;
-        }
+    /* Animasi Isi Konten */
+    .category-content {
+        animation: fadeIn 0.4s ease-in-out;
+    }
 
-        /* Judul Menu Lipat */
-        summary.category-header { 
-            font-size: 14px; 
-            font-weight: 800; 
-            display: flex; 
-            justify-content: space-between;
-            align-items: center; 
-            color: #1c1e21;
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            cursor: pointer;
-            list-style: none; /* Menyembunyikan panah bawaan browser */
-            outline: none;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        /* Menyembunyikan panah bawaan di Safari/Chrome */
-        summary.category-header::-webkit-details-marker {
-            display: none;
-        }
+    /* Tombol Link & Harga (Upgrade UI/UX) */
+    .link-item { 
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff; 
+        padding: 16px 20px; 
+        margin-bottom: 14px; 
+        border-radius: 16px; 
+        text-decoration: none; 
+        color: #1c1e21; 
+        border: 1px solid #eaeaea; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    }
 
-        /* Ikon Panah Buka Tutup */
-        .toggle-icon {
-            font-size: 18px;
-            transition: transform 0.3s ease;
-            color: var(--primary);
-        }
+    .link-item:last-child {
+        margin-bottom: 0;
+    }
 
-        /* Putar ikon saat menu dibuka */
-        details[open] .toggle-icon {
-            transform: rotate(180deg);
-        }
+    .link-item:hover { 
+        background: #ffffff; 
+        border-color: #ee4d2d; 
+        transform: translateY(-4px) scale(1.01); 
+        box-shadow: 0 12px 24px rgba(238, 77, 45, 0.15); 
+    }
 
-        /* Jarak antara judul dan isi saat dibuka */
-        details[open] summary.category-header {
-            margin-bottom: 20px;
-            border-bottom: 2px dashed #eaeaea;
-            padding-bottom: 15px;
-        }
+    /* Bagian Informasi Produk & Harga */
+    .item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-right: 15px;
+    }
 
-        /* Animasi Isi Konten */
-        .category-content {
-            animation: fadeIn 0.4s ease-in-out;
-        }
+    .item-title {
+        font-weight: 600; 
+        font-size: 14px;
+        line-height: 1.4;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .item-price {
+        font-weight: 800;
+        font-size: 13px;
+        color: #ee4d2d; /* Warna Oranye Shopee */
+        background: #fff0ed;
+        padding: 4px 10px;
+        border-radius: 8px;
+        display: inline-block;
+        width: fit-content;
+    }
 
-        /* Tombol Link & Harga (Upgrade UI/UX) */
-        .link-item { 
-            display: flex; 
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff; 
-            padding: 16px 20px; 
-            margin-bottom: 14px; 
-            border-radius: 16px; 
-            text-decoration: none; 
-            color: #1c1e21; 
-            border: 1px solid #eaeaea; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-        }
+    .link-item .arrow {
+        color: #ced4da;
+        font-size: 20px;
+        transition: all 0.3s ease;
+    }
 
-        .link-item:last-child {
-            margin-bottom: 0;
-        }
+    .link-item:hover .arrow {
+        color: #ee4d2d;
+        transform: translateX(6px); 
+    }
 
-        .link-item:hover { 
-            background: #ffffff; 
-            border-color: #ee4d2d; 
-            transform: translateY(-4px) scale(1.01); 
-            box-shadow: 0 12px 24px rgba(238, 77, 45, 0.15); 
-        }
+    /* Container iframe khusus agar responsif */
+    .iframe-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+        margin-top: 15px;
+    }
 
-        /* Bagian Informasi Produk & Harga */
-        .item-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding-right: 15px;
-        }
+    /* Footer Pro Upgrade */
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7); 
+        padding-bottom: 40px;
+    }
 
-        .item-title {
-            font-weight: 600; 
-            font-size: 14px;
-            line-height: 1.4;
-        }
+    .footer-links {
+        margin-bottom: 12px;
+    }
 
-        .item-price {
-            font-weight: 800;
-            font-size: 15px;
-            color: #ee4d2d; /* Warna Oranye Shopee */
-            background: #fff0ed;
-            padding: 4px 10px;
-            border-radius: 8px;
-            display: inline-block;
-            width: fit-content;
-        }
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+    }
 
-        .link-item .arrow {
-            color: #ced4da;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover .arrow {
-            color: #ee4d2d;
-            transform: translateX(6px); 
-        }
-
-        /* Container iframe khusus agar responsif */
-        .iframe-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-top: 15px;
-        }
-
-        /* Footer Pro Upgrade */
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7); 
-            padding-bottom: 40px;
-        }
-
-        .footer-links {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #25f4ee; 
-        }
-    </style>
+    .footer-links a:hover {
+        color: #25f4ee; 
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        
-        <div class="profile-section">
-            <img src="profile-img.jpg" alt="Profile" class="profile-img">
-            <h1 class="profile-name">Katalog Abdi</h1>
-            <p class="profile-bio">Kumpulan barang pilihan terbaik yang sudah teruji dan sering saya gunakan.</p>
-        </div>
+<div class="container">
 
-        <details class="category-card" open> <summary class="category-header">
-                <span>1. 🧳 Pakaian Lebaran</span>
-                <span class="toggle-icon">▼</span>
-            </summary>
-            <div class="category-content">
-                <a href="https://s.shopee.co.id/8ph03qdBiw" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Baju Couple Pasangan / Keluarga Mewah Elegan</span>
-                        <span class="item-price">Rp 155.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="https://s.shopee.co.id/AKVnp5gEQy" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">SARIMBIT 2025 PEARL SERIES - DARK DENIM</span>
-                        <span class="item-price">Rp 180.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="https://s.shopee.co.id/9AJqRDMcTg" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Azkana Batik Gamis Brokat Couple Remaja</span>
-                        <span class="item-price">Rp 120.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="https://s.shopee.co.id/9fG72H3wzF" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Ventedaily Daniza Family Sarimbit 2026</span>
-                        <span class="item-price">Rp 210.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
-        </details>
-
-        <details class="category-card">
-            <summary class="category-header">
-                <span>2. 💻 Setup Coding & Web Dev</span>
-                <span class="toggle-icon">▼</span>
-            </summary>
-            <div class="category-content">
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Keyboard Mechanical Wireless RGB</span>
-                        <span class="item-price">Rp 450.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Mouse Vertikal Ergonomis Anti Pegal</span>
-                        <span class="item-price">Rp 250.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Stand Laptop / Tablet Aluminium Kuat</span>
-                        <span class="item-price">Rp 135.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
-        </details>
-
-        <details class="category-card">
-            <summary class="category-header">
-                <span>3. 🎥 Gear Kreator & Ads</span>
-                <span class="toggle-icon">▼</span>
-            </summary>
-            <div class="category-content">
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Microphone Wireless Clip-on Jernih</span>
-                        <span class="item-price">Rp 185.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Ring Light 26cm + Tripod Studio 2M</span>
-                        <span class="item-price">Rp 95.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
-        </details>
-
-        <details class="category-card">
-            <summary class="category-header">
-                <span>4. 👕 Fashion & Daily Wear</span>
-                <span class="toggle-icon">▼</span>
-            </summary>
-            <div class="category-content">
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Kaos Polos Cotton Combed 30s Premium</span>
-                        <span class="item-price">Rp 35.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
-                    <div class="item-info">
-                        <span class="item-title">Sneakers Casual Pria / Sepatu Jalan</span>
-                        <span class="item-price">Rp 190.000</span>
-                    </div>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
-        </details>
-
-        <details class="category-card" open>
-            <summary class="category-header">
-                <span>📱 Postingan Terbaru</span>
-                <span class="toggle-icon">▼</span>
-            </summary>
-            <div class="category-content">
-                <div class="iframe-container">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500" width="100%" height="512" style="border:none;overflow:hidden; max-width: 500px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-            </div>
-        </details>
-
-        <div class="footer">
-            <div class="footer-links">
-                <a href="https://abdisyaif.com" target="_blank">Website</a> •
-                <a href="https://www.facebook.com/Samba06" target="_blank">Facebook</a> •
-                <a href="https://www.tiktok.com/@abdi.syaif?_r=1&_t=ZS-94dPt4PjBWj" target="_blank">TikTok</a>
-            </div>
-            © 2026 Abdi. Kumpulan Rekomendasi Pilihan.
-        </div>
-
+    <div class="profile-section">
+        <img src="profile-img.jpg" alt="Profile" class="profile-img">
+        <h1 class="profile-name">Katalog Abdi</h1>
+        <p class="profile-bio">Kumpulan barang pilihan terbaik yang sudah teruji dan sering saya gunakan.</p>
     </div>
+
+    <details class="category-card" open> 
+        <summary class="category-header">
+            <span>1. 👗 Pakaian & Fashion</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        <div class="category-content">
+            <a href="[https://s.shopee.co.id/2qPnlwQar3](https://s.shopee.co.id/2qPnlwQar3)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Koleksi Fashion AVASA Official</span>
+                    <span class="item-price">Cek Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+            <a href="[https://s.shopee.co.id/8ARK7k6I2b](https://s.shopee.co.id/8ARK7k6I2b)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Outfit Kekinian ZAFCLOTHING</span>
+                    <span class="item-price">Kunjungi Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </details>
+
+    <details class="category-card">
+        <summary class="category-header">
+            <span>2. 💄 Skincare & Perawatan</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        <div class="category-content">
+            <a href="[https://s.shopee.co.id/70FMjbAjQ3](https://s.shopee.co.id/70FMjbAjQ3)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Produk Kesehatan Herbaltire</span>
+                    <span class="item-price">Cek Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+            <a href="[https://s.shopee.co.id/40blA5M9U8](https://s.shopee.co.id/40blA5M9U8)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Perawatan Kulit & Wajah VSkin_</span>
+                    <span class="item-price">Kunjungi Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </details>
+
+    <details class="category-card">
+        <summary class="category-header">
+            <span>3. 🍔 Makanan & Cemilan</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        <div class="category-content">
+            <a href="[https://s.shopee.co.id/gLJBxYqFQ](https://s.shopee.co.id/gLJBxYqFQ)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Pusat Cemilan Dapoer FreLin</span>
+                    <span class="item-price">Cek Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+            <a href="[https://s.shopee.co.id/7poTj87YjG](https://s.shopee.co.id/7poTj87YjG)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Aneka Snack & Kuliner Station</span>
+                    <span class="item-price">Kunjungi Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </details>
+
+    <details class="category-card">
+        <summary class="category-header">
+            <span>4. 🏡 Kebutuhan Rumah & Hobi</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        <div class="category-content">
+            <a href="[https://s.shopee.co.id/9zsyJ6zJJs](https://s.shopee.co.id/9zsyJ6zJJs)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Perabotan & LUMIERE Lampu.ID</span>
+                    <span class="item-price">Cek Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+            <a href="[https://s.shopee.co.id/9KdHVt1qfg](https://s.shopee.co.id/9KdHVt1qfg)" class="link-item" target="_blank">
+                <div class="item-info">
+                    <span class="item-title">Perlengkapan Hobi Jaring</span>
+                    <span class="item-price">Kunjungi Toko</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </details>
+
+    <details class="category-card">
+        <summary class="category-header">
+            <span>📱 Postingan Terbaru</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        <div class="category-content">
+            <div class="iframe-container">
+                <iframe src="[https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500](https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500)" width="100%" height="512" style="border:none;overflow:hidden; max-width: 500px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+        </div>
+    </details>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href="[https://abdisyaif.com](https://abdisyaif.com)" target="_blank">Website</a> •
+            <a href="[https://www.facebook.com/Samba06](https://www.facebook.com/Samba06)" target="_blank">Facebook</a> •
+            <a href="[https://www.tiktok.com/@abdi.syaif?_r=1&_t=ZS-94dPt4PjBWj](https://www.tiktok.com/@abdi.syaif?_r=1&_t=ZS-94dPt4PjBWj)" target="_blank">TikTok</a>
+        </div>
+        © 2026 Abdi. Kumpulan Rekomendasi Pilihan.
+    </div>
+
+</div>
 </body>
 </html>
