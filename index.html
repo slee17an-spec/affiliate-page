@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Rekomendasi Pilihan | link.abdisyaif.com</title>
-
-<link rel="icon" type="image/png" href="favicon.png">
+<title>Katalog Abdi | link.abdisyaif.com</title>
 
 <style>
 
-:root{
---primary:#ee4d2d;
---bg-color:#f0f2f5;
---text-main:#1c1e21;
---text-muted:#606770;
---card-bg:#ffffff;
-}
-
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-background:linear-gradient(135deg,#ee4d2d 0%,#111111 50%,#fe2c55 100%);
-background-attachment:fixed;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+background:linear-gradient(135deg,#ee4d2d,#111,#fe2c55);
 margin:0;
-color:#1c1e21;
+color:#111;
 }
 
 .container{
@@ -32,245 +22,175 @@ margin:auto;
 padding:40px 20px;
 }
 
-/* PROFILE */
-
-.profile-section{
+.profile{
 text-align:center;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
-.profile-img{
+.profile img{
 width:110px;
 height:110px;
 border-radius:50%;
-object-fit:cover;
-border:3px solid #fff;
-margin-bottom:15px;
+border:3px solid white;
 }
 
-.profile-name{
-font-size:22px;
-font-weight:700;
-margin:0;
-color:#fff;
+.profile h1{
+color:white;
+margin:10px 0 5px;
 }
 
-.profile-bio{
+.profile p{
+color:#ddd;
 font-size:14px;
-color:#e4e6eb;
-margin-top:6px;
 }
 
-/* CARD */
-
-details.category-card{
-background:rgba(255,255,255,0.92);
-border-radius:22px;
+.card{
+background:white;
 padding:20px;
-margin-bottom:24px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+border-radius:20px;
+margin-bottom:20px;
 }
 
-summary.category-header{
+.search{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:15px;
 font-size:14px;
-font-weight:800;
+}
+
+.link{
 display:flex;
 justify-content:space-between;
 align-items:center;
-cursor:pointer;
-text-transform:uppercase;
-letter-spacing:1px;
-list-style:none;
-}
-
-summary::-webkit-details-marker{
-display:none;
-}
-
-.toggle-icon{
-transition:0.3s;
-color:var(--primary);
-}
-
-details[open] .toggle-icon{
-transform:rotate(180deg);
-}
-
-.category-content{
-margin-top:18px;
-}
-
-/* LINK ITEM */
-
-.link-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#fff;
-padding:16px 18px;
-margin-bottom:12px;
-border-radius:14px;
-text-decoration:none;
-color:#1c1e21;
+padding:14px;
+border-radius:12px;
 border:1px solid #eee;
-transition:0.25s;
+margin-bottom:10px;
+text-decoration:none;
+color:#111;
 }
 
-.link-item:hover{
+.link:hover{
 border-color:#ee4d2d;
-transform:translateY(-3px);
-box-shadow:0 10px 20px rgba(238,77,45,0.15);
 }
 
-.item-info{
-display:flex;
-flex-direction:column;
-gap:6px;
-}
-
-.item-title{
-font-weight:600;
+.title{
 font-size:14px;
+font-weight:600;
 }
 
-.item-price{
-font-size:13px;
-font-weight:700;
+.badge{
+font-size:12px;
 background:#fff0ed;
 color:#ee4d2d;
-padding:3px 10px;
-border-radius:8px;
-width:fit-content;
+padding:3px 8px;
+border-radius:6px;
 }
 
-.arrow{
-font-size:18px;
-color:#bbb;
-}
-
-.footer{
-text-align:center;
-margin-top:40px;
-font-size:13px;
-color:#fff;
-}
-
-.footer a{
-color:#fff;
-text-decoration:none;
-margin:0 10px;
+.loadmore{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#ee4d2d;
+color:white;
+font-weight:600;
+cursor:pointer;
+margin-top:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="profile-section">
-<img src="profile-img.jpg" class="profile-img">
-<h1 class="profile-name">Katalog Abdi</h1>
-<p class="profile-bio">Kumpulan barang pilihan terbaik yang sudah teruji dan sering saya gunakan.</p>
+<div class="profile">
+<img src="profile-img.jpg">
+<h1>Katalog Abdi</h1>
+<p>Rekomendasi toko pilihan terbaik</p>
 </div>
 
-<!-- PRODUK PILIHAN -->
+<div class="card">
 
-<details class="category-card" open>
-<summary class="category-header">
-<span>🧳 Pakaian Lebaran</span>
-<span class="toggle-icon">▼</span>
-</summary>
+<input id="search" class="search" placeholder="Cari toko...">
 
-<div class="category-content">
+<div id="shop-list"></div>
 
-<a href="https://s.shopee.co.id/8ph03qdBiw" class="link-item" target="_blank">
-<div class="item-info">
-<span class="item-title">Baju Couple Pasangan / Keluarga</span>
-<span class="item-price">Rp 155.000</span>
-</div>
-<span class="arrow">→</span>
-</a>
-
-<a href="https://s.shopee.co.id/AKVnp5gEQy" class="link-item" target="_blank">
-<div class="item-info">
-<span class="item-title">SARIMBIT 2025 PEARL SERIES</span>
-<span class="item-price">Rp 180.000</span>
-</div>
-<span class="arrow">→</span>
-</a>
-
-</div>
-</details>
-
-
-<!-- TOKO SHOPEE OTOMATIS -->
-
-<details class="category-card">
-<summary class="category-header">
-<span>🛍️ Rekomendasi Toko Pilihan</span>
-<span class="toggle-icon">▼</span>
-</summary>
-
-<div class="category-content" id="shop-container">
-
-<!-- AUTO FROM JS -->
-
-</div>
-
-</details>
-
-
-<div class="footer">
-
-<a href="https://abdisyaif.com" target="_blank">Website</a> •
-
-<a href="https://www.facebook.com/Samba06" target="_blank">Facebook</a> •
-
-<a href="https://www.tiktok.com/@abdi.syaif" target="_blank">TikTok</a>
-
-<br><br>
-
-© 2026 Abdi
+<button id="loadMore" class="loadmore">Muat Lebih Banyak</button>
 
 </div>
 
 </div>
-
-
-<script src="shops.js"></script>
 
 <script>
 
-const container=document.getElementById("shop-container");
+let shops=[]
+let filtered=[]
+let limit=30
+let index=0
 
-shops.forEach(shop=>{
+const list=document.getElementById("shop-list")
+const search=document.getElementById("search")
+const loadMore=document.getElementById("loadMore")
 
-const item=document.createElement("a");
+fetch("shops.json")
+.then(r=>r.json())
+.then(data=>{
+shops=data
+filtered=shops
+render()
+})
 
-item.href=shop.link;
+function render(){
 
-item.className="link-item";
+const slice=filtered.slice(index,index+limit)
 
-item.target="_blank";
+slice.forEach(shop=>{
 
-item.innerHTML=`
+const a=document.createElement("a")
 
-<div class="item-info">
+a.href=shop.link
+a.target="_blank"
+a.className="link"
 
-<span class="item-title">${shop.name}</span>
+a.innerHTML=`
+<span class="title">${shop.name}</span>
+<span class="badge">Buka</span>
+`
 
-<span class="item-price">Buka Toko</span>
+list.appendChild(a)
 
-</div>
+})
 
-<span class="arrow">→</span>
+index+=limit
 
-`;
+if(index>=filtered.length){
+loadMore.style.display="none"
+}
 
-container.appendChild(item);
+}
 
-});
+loadMore.onclick=render
+
+search.oninput=()=>{
+
+list.innerHTML=""
+index=0
+
+const q=search.value.toLowerCase()
+
+filtered=shops.filter(s=>s.name.toLowerCase().includes(q))
+
+loadMore.style.display="block"
+
+render()
+
+}
 
 </script>
 
