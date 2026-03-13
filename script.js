@@ -129,3 +129,47 @@ load.style.display="block"
 render()
 
 }
+
+/* =========================
+   SEARCH SUPER CEPAT
+   ========================= */
+
+let searchCache = []
+
+function buildSearchCache(){
+
+searchCache = shops.map(shop => ({
+name: shop.name.toLowerCase(),
+data: shop
+}))
+
+}
+
+/* search instan */
+function searchFast(query){
+
+query = query.toLowerCase().trim()
+
+if(query === "") return shops
+
+return searchCache
+.filter(s => s.name.includes(query))
+.map(s => s.data)
+
+}
+
+/* event search */
+search.addEventListener("input", () => {
+
+const q = search.value
+
+list.innerHTML = ""
+index = 0
+
+filtered = searchFast(q)
+
+load.style.display = "block"
+
+render()
+
+})
