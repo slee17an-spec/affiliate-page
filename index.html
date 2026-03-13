@@ -62,7 +62,7 @@
             color: #e4e6eb; /* Teks bio diubah jadi putih redup */
             margin: 0; 
         }
-       
+        
         /* Bagian Kategori (Upgrade Premium Glassmorphism) */
         .category-card { 
             background: rgba(255, 255, 255, 0.92); /* Putih sedikit transparan */
@@ -127,6 +127,15 @@
         .link-item:hover .arrow {
             color: #ee4d2d;
             transform: translateX(6px); /* Animasi panah bergeser ke kanan saat disentuh */
+        }
+
+        /* Container iframe khusus agar responsif */
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
         }
 
         /* Footer Pro Upgrade */
@@ -218,6 +227,13 @@
             <a href="LINK_SHOPEE_DISINI" class="link-item" target="_blank">
                 Jam Tangan Minimalis <span class="arrow">→</span>
             </a>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">📱 Postingan Terbaru</div>
+            <div class="iframe-container">
+                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02dsQit1qGiA2AaQjWmEbW8w5V48qZBqmXisScyNWSgWm8MKDvRsN7XXFY15aE6aP9l%26id%3D61583923666531&show_text=true&width=500" width="100%" height="512" style="border:none;overflow:hidden; max-width: 500px;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
         </div>
 
         <div class="footer">
