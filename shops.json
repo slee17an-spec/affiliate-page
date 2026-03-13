@@ -1,19 +1,104 @@
 [
-{"name":"Void State","link":"https://s.shopee.co.id/15cOjbNbE"},
-{"name":"Nipis store 🌱","link":"https://s.shopee.co.id/BP2b2akGH"},
-{"name":"Musi.offiall","link":"https://s.shopee.co.id/LiSnLa6vK"},
-{"name":"mariboci","link":"https://s.shopee.co.id/W1szeZTaN"},
-{"name":"Dapoer FreLin","link":"https://s.shopee.co.id/gLJBxYqFQ"},
-{"name":"ariematic","link":"https://s.shopee.co.id/qejOGYCuT"},
-{"name":"Shopping_Solutions","link":"https://s.shopee.co.id/10y9aZXZZW"},
-{"name":"paige shop","link":"https://s.shopee.co.id/1BHZmsWwEZ"},
-{"name":"VSkin_","link":"https://s.shopee.co.id/40blA5M9U8"},
-{"name":"Cahaya Supply","link":"https://s.shopee.co.id/4AvBMOLW9B"},
-{"name":"ZERIN_STORE28","link":"https://s.shopee.co.id/4LEbYhKsoE"},
-{"name":"Veloute ID","link":"https://s.shopee.co.id/4VY1l0KFTH"},
-{"name":"berkah_tengger","link":"https://s.shopee.co.id/4frRxJJc8K"},
-{"name":"Parra.Stuff","link":"https://s.shopee.co.id/4qAs9cIynN"},
-{"name":"dsh23stores","link":"https://s.shopee.co.id/50UILvILSQ"},
-{"name":"RAYNS.STORE","link":"https://s.shopee.co.id/5AniYEHi7T"},
-{"name":"Semua Outfit","link":"https://s.shopee.co.id/2g6NZdREC0"}
+{
+"name":"Void State",
+"link":"https://s.shopee.co.id/15cOjbNbE",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"Nipis store 🌱",
+"link":"https://s.shopee.co.id/BP2b2akGH",
+"category":"kecantikan",
+"clicks":0
+},
+{
+"name":"Musi.offiall",
+"link":"https://s.shopee.co.id/LiSnLa6vK",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"mariboci",
+"link":"https://s.shopee.co.id/W1szeZTaN",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"Dapoer FreLin",
+"link":"https://s.shopee.co.id/gLJBxYqFQ",
+"category":"makanan",
+"clicks":0
+},
+{
+"name":"ariematic",
+"link":"https://s.shopee.co.id/qejOGYCuT",
+"category":"elektronik",
+"clicks":0
+},
+{
+"name":"Shopping_Solutions",
+"link":"https://s.shopee.co.id/10y9aZXZZW",
+"category":"elektronik",
+"clicks":0
+},
+{
+"name":"paige shop",
+"link":"https://s.shopee.co.id/1BHZmsWwEZ",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"VSkin_",
+"link":"https://s.shopee.co.id/40blA5M9U8",
+"category":"kecantikan",
+"clicks":0
+},
+{
+"name":"Cahaya Supply",
+"link":"https://s.shopee.co.id/4AvBMOLW9B",
+"category":"peralatan",
+"clicks":0
+},
+{
+"name":"ZERIN_STORE28",
+"link":"https://s.shopee.co.id/4LEbYhKsoE",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"Veloute ID",
+"link":"https://s.shopee.co.id/4VY1l0KFTH",
+"category":"kecantikan",
+"clicks":0
+},
+{
+"name":"berkah_tengger",
+"link":"https://s.shopee.co.id/4frRxJJc8K",
+"category":"makanan",
+"clicks":0
+},
+{
+"name":"Parra.Stuff",
+"link":"https://s.shopee.co.id/4qAs9cIynN",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"dsh23stores",
+"link":"https://s.shopee.co.id/50UILvILSQ",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"RAYNS.STORE",
+"link":"https://s.shopee.co.id/5AniYEHi7T",
+"category":"fashion",
+"clicks":0
+},
+{
+"name":"Semua Outfit",
+"link":"https://s.shopee.co.id/2g6NZdREC0",
+"category":"fashion",
+"clicks":0
+}
 ]
