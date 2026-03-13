@@ -16,6 +16,8 @@ shops=data
 
 mergeClicks()
 
+buildSearchCache()
+   
 filtered=shops
 
 createCategories()
