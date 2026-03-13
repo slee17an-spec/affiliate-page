@@ -91,7 +91,7 @@ a.target="_blank"
 
 a.className="link"
 
-a.onclick=()=>trackClick(shop.name)
+a.onclick=()=>trackClick(shop)
 
 a.innerHTML=`
 
@@ -157,6 +157,39 @@ if(query === "") return shops
 return searchCache
 .filter(s => s.name.includes(query))
 .map(s => s.data)
+
+}
+
+/* =========================
+   TRACKING KLIK AFFILIATE
+   ========================= */
+
+function trackClick(shop){
+
+/* analytics global */
+if(typeof gtag === "function"){
+
+gtag("event","affiliate_click",{
+
+event_category:"affiliate",
+
+event_label:shop.name,
+
+value:1
+
+})
+
+}
+
+/* statistik lokal */
+let data = JSON.parse(
+localStorage.getItem("clicks") || "{}"
+)
+
+data[shop.name] = (data[shop.name] || 0) + 1
+
+localStorage.setItem("clicks",
+JSON.stringify(data))
 
 }
 
